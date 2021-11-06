@@ -14,5 +14,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('posts');
+});
+
+Route::get('/post/{p}', function ($slag) {
+    $path = __DIR__ ."/../resources/posts/{$slag}.html";
+
+    if ( !file_exists($path)){
+        abort(404);
+    }
+
+    $filename = file_get_contents($path);
+
+    return view('post', [
+        "post" => $filename
+    ]);
+});
+
+Route::get('/first', function () {
+    return view('first');
+});
+
+Route::get('/second', function () {
+    return view('second');
+});
+
+Route::get('/third', function () {
+    return view('third');
 });

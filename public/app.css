@@ -1,0 +1,13 @@
+body {
+    position: relative;
+    max-width: 60vw;
+    margin: auto;
+}
+
+p {
+    line-height: 1.6;
+}
+
+article + article {
+    margin-top: 2em;
+}
