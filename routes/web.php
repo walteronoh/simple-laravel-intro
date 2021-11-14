@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,22 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts');
+    //Read all files from a directory
+    $posts = Post::all();
+    return view('home', [
+        "home" => $posts
+    ]);
 });
 
-Route::get('/post/{p}', function ($slag) {
-    $path = __DIR__ ."/../resources/posts/{$slag}.html";
-
-    if ( !file_exists($path)){
-        abort(404);
-    }
-
-    $filename = file_get_contents($path);
+Route::get('/post/{p}', function ($slug) {
+    //Use filesystem class to read a directory
+    $filename = Post::find($slug);
 
     return view('post', [
         "post" => $filename
     ]);
-});
+})->where('p', '[A-z-]+');
 
 Route::get('/first', function () {
     return view('first');
