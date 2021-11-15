@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-
-<title>My post</title>
-<link rel="stylesheet" href="/app.css">
-
-<body>
+<!-- When using these components, use below syntax -->
+<!-- x-'NameOfLayout' -->
+<x-layouts>
     <article>
         <h1> Second post </h1>
         <p>
@@ -11,4 +8,4 @@
         </p>
     </article>
     <a href="/">Go back</a>
-</body>
+</x-layouts>
